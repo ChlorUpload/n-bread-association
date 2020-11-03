@@ -8,11 +8,14 @@ class Monomial
 private:
 	int _coefficient;
 	int _order;
+
+
 public:
 	Monomial();
 	~Monomial();
-
 	Monomial(std::string& expr);
+	
+	void Nospace(std::string& expr);
 
 	int getValue(int x);
 };
