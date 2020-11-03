@@ -22,13 +22,11 @@ online.
 
 ## timeline
 
-* 10. 26. 아이디어 회의
-* 10. 27. 애플리케이션 디자인 초안 및 Proposal 작성
-* 11. 01. Github repository 생성 및 test project 실습
-* 11. 03. 테스트 서버 작성, Git 활용, C++ 실습
+10. 26. 아이디어 회의
+10. 27. 애플리케이션 디자인 초안 및 Proposal 작성
+11. 01. Github repository 생성 및 test project 실습
+11. 03. 테스트 서버 작성, Git 활용법 및 C++ 실습 진행
 
 ## design
 
-현재까지 만들어진 N빵협회 디자인을 [여기](https://xd.adobe.com/view/88d84aee-b64a-44ee-b642-7646100e6126-dd8b/)에서 확인 해 보실 수 있습니다.
-
-[
+현재까지 만들어진 N빵협회 디자인을 [여기](https://xd.adobe.com/view/88d84aee-b64a-44ee-b642-7646100e6126-dd8b/) 에서 확인 해 보실 수 있습니다.
