@@ -18,5 +18,10 @@ Polynomial::Polynomial(std::string& expr)
 
 int Polynomial::getValue(int x)
 {
-	return 0;
+	int PValue = 0; //°á°ú°ª
+	for (Monomial &ele : _monomials)
+	{
+		PValue += ele.getValue(x);
+	}
+	return PValue;
 }
