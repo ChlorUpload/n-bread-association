@@ -141,6 +141,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="monomial.cpp" />
+    <ClCompile Include="polynomial.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="monomial.h" />
