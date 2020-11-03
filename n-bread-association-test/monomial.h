@@ -3,22 +3,25 @@
 
 #include <string>
 
+class Polynomial;
+
 class Monomial
 {
 private:
 	int _coefficient;
 	int _order;
 
-
+	void removeSpace(std::string& expr);
 public:
 	Monomial();
 	Monomial(int coefficient, int order);
 	~Monomial();
-	Monomial(std::string& expr);
-	
-	void Nospace(std::string& expr);
+	Monomial(const std::string& expr);
 
 	int getValue(int x);
+
+	friend Polynomial operator+(Polynomial& lhs, Monomial& rhs);
+	friend Polynomial operator+(Monomial& lhs, Polynomial& rhs);
 };
 
 #endif

@@ -1,8 +1,8 @@
 #include "polynomial.h"
+#include "monomial.h"
 
 Polynomial::Polynomial()
 {
-	_monomials.push_back(Monomial());
 }
 
 Polynomial::~Polynomial()
@@ -10,17 +10,17 @@ Polynomial::~Polynomial()
 
 }
 
-Polynomial::Polynomial(std::string& expr)
+Polynomial::Polynomial(const std::string& expr)
 {
 	std::string temp;
 	for(int i=0; i < expr.length(); i++)
 	{
-		if (expr[i] == '+' or expr[i] == '-')
+		if (expr[i] == '+' || expr[i] == '-')
 		{
-			_monomials.push_back(Monomial(temp));
-			temp.empty();
+			if(!temp.empty()) _monomials.push_back(Monomial(temp));
+			temp.clear();
 		}
-		temp.push_back(expr[i]);
+		if(expr[i] != ' ') temp.push_back(expr[i]);
 	}
 	_monomials.push_back(Monomial(temp));
 }
@@ -28,6 +28,9 @@ Polynomial::Polynomial(std::string& expr)
 int Polynomial::getValue(int x)
 {
 	int value = 0; //°á°ú°ª
+
+	if (_monomials.empty()) return 0;
+
 	for (Monomial &elem : _monomials)
 	{
 		value += elem.getValue(x);
@@ -35,18 +38,26 @@ int Polynomial::getValue(int x)
 	return value;
 }
 
-Polynomial Polynomial::operator+(Monomial& rhs)
+Polynomial operator+(Polynomial& lhs, Monomial& rhs)
 {
-	for (Monomial& elem : _monomials)
+	Polynomial ret;
+	for (Monomial& elem : lhs._monomials)
 	{
 		if (elem._order == rhs._order)
 		{
-			elem._coefficient += rhs._coefficient;
-			return *this;
+			Monomial temp{
+				elem._coefficient + rhs._coefficient,
+				elem._order
+			};
+			ret._monomials.push_back(temp);
+		}
+		else
+		{
+			ret._monomials.push_back(elem);
 		}
 	}
-	_monomials.push_back(rhs);
-	return *this;
+
+	return ret;
 }
 
 Polynomial operator+(Monomial& lhs, Polynomial& rhs)
@@ -73,10 +84,11 @@ Polynomial operator+(Monomial& lhs, Polynomial& rhs)
 
 Polynomial Polynomial::operator+(Polynomial& rhs)
 {
+	Polynomial ret = *this;
 	for (Monomial& elem : rhs._monomials)
 	{
-		*this = *this + elem;
+		ret = ret + elem;
 	}
 
-	return *this;
+	return ret;
 }

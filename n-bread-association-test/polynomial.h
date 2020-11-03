@@ -2,8 +2,9 @@
 #define __H_POLYNOMIAL__
 
 #include <vector>
+#include <string>
 
-#include "monomial.h"
+class Monomial;
 
 class Polynomial
 {
@@ -14,12 +15,13 @@ public:
 	Polynomial();
 	~Polynomial();
 
-	Polynomial(std::string& expr);
+	Polynomial(const std::string& expr);
 
 	int getValue(int x);
 
-	Polynomial operator+(Monomial& rhs);
 	Polynomial operator+(Polynomial& rhs);
+
+	friend Polynomial operator+(Polynomial& lhs, Monomial& rhs);
 	friend Polynomial operator+(Monomial& lhs, Polynomial& rhs);
 };
 

@@ -1,5 +1,6 @@
-#include "polynomial.h"
 #include <cmath>
+
+#include "monomial.h"
 
 Monomial::Monomial() : _coefficient{ 0 }, _order{ 0 }
 {
@@ -17,7 +18,7 @@ Monomial::~Monomial()
 }
 
 
-void Monomial::Nospace(std::string& expr)
+void Monomial::removeSpace(std::string& expr)
 {
 	std::string pattern = " ";
 	std::string replace = "";
@@ -31,42 +32,43 @@ void Monomial::Nospace(std::string& expr)
 		offset = pos + replace.size();
 	}
 
-		expr=result;
-		return 0;
+	expr=result;
 }
 
-Monomial::Monomial(std::string& expr)
+Monomial::Monomial(const std::string& expr)
 {
-	std::string copy_expr;
-	copy_expr = expr;
-	int size = copy_expr.length();
-
+	std::string copy_expr = expr;
+	removeSpace(copy_expr);
 
 	std::string divide_copy_front, divide_copy_back;
-	std::string temp = "";
-	int i = 0;
-	int j = 0;
-	std::string expr_end(*copy_expr.end());
 
-	while (temp != "x")
+	std::string::size_type pos = copy_expr.find("x", 0);
+
+	// 상수항
+	if (pos == std::string::npos)
 	{
-		divide_copy_front[i] = expr[i];
-		temp = expr[i];
-		i++;
+		_coefficient = std::atoi(copy_expr.c_str());
+		_order = 0;
+		return;
 	}
-	i = i + 2;
-	while ( expr_end != temp)
+
+	divide_copy_front = copy_expr.substr(0, pos);
+	divide_copy_back = copy_expr.substr(pos + 1, std::string::npos);
+
+	if (divide_copy_back[0] == '^')
 	{
-		divide_copy_back[j] = expr[i];
-		temp = expr[i];
-		i++;
-		j++;
-
+		// ^ 표시가 있으므로 차수가 2 이상
+		divide_copy_back = divide_copy_back.substr(1, std::string::npos);
+		_coefficient = atoi(divide_copy_front.c_str());
+		_order = atoi(divide_copy_back.c_str());
 	}
-	_coefficient = atoi(divide_copy_back.c_str());
-	_order = atoi(divide_copy_front.c_str());
-
-
+	else
+	{
+		// 차수가 1
+		_coefficient = atoi(divide_copy_front.c_str());
+		_order = 1;
+	}
+	
 }
 
 int Monomial::getValue(int x)
