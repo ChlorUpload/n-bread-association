@@ -29,6 +29,6 @@ online.
 
 ## design
 
-현재까지 만들어진 N빵협회 디자인을 [여기]https://xd.adobe.com/view/88d84aee-b64a-44ee-b642-7646100e6126-dd8b/ 에서 확인 해 보실 수 있습니다.
+현재까지 만들어진 N빵협회 디자인을 [여기](https://xd.adobe.com/view/88d84aee-b64a-44ee-b642-7646100e6126-dd8b/)에서 확인 해 보실 수 있습니다.
 
 [
