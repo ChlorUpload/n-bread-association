@@ -1,4 +1,5 @@
 #include "monomial.h"
+#include <cmath>
 
 Monomial::Monomial() : _coefficient{ 0 }, _order{ 0 }
 {
@@ -65,5 +66,5 @@ Monomial::Monomial(std::string& expr)
 
 int Monomial::getValue(int x)
 {
-	return 0;
+	return _coefficient * pow(x, _order);
 }
