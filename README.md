@@ -22,10 +22,10 @@ online.
 
 ## timeline
 
-10. 26. 아이디어 회의
-10. 27. 애플리케이션 디자인 초안 및 Proposal 작성
-11. 01. Github repository 생성 및 test project 실습
-11. 03. 테스트 서버 작성, Git 활용법 및 C++ 실습 진행
+2020-10-26. 아이디어 회의
+2020-10-27. 애플리케이션 디자인 초안 및 Proposal 작성
+2020-11-01. Github repository 생성 및 test project 실습
+2020-11-03. 테스트 서버 작성, Git 활용법 및 C++ 실습 진행
 
 ## design
 
