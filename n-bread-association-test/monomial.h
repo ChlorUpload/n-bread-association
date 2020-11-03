@@ -5,11 +5,12 @@
 
 class Monomial
 {
-private:
+public:
 	int _coefficient;
 	int _order;
-public:
+
 	Monomial();
+	Monomial(int coefficient, int order);
 	~Monomial();
 
 	Monomial(std::string& expr);

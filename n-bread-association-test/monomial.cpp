@@ -1,7 +1,12 @@
-#include "monomial.h"
+#include "polynomial.h"
 #include <cmath>
 
 Monomial::Monomial() : _coefficient{ 0 }, _order{ 0 }
+{
+
+}
+
+Monomial::Monomial(int coefficient, int order) : _coefficient(coefficient), _order(order)
 {
 
 }

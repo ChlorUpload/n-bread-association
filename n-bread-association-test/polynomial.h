@@ -17,6 +17,10 @@ public:
 	Polynomial(std::string& expr);
 
 	int getValue(int x);
+
+	Polynomial operator+(Monomial& rhs);
+	Polynomial operator+(Polynomial& rhs);
+	friend Polynomial operator+(Monomial& lhs, Polynomial& rhs);
 };
 
 #endif
