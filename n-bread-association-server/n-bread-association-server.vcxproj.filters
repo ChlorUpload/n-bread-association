@@ -52,6 +52,12 @@
     <Filter Include="헤더 파일\core\actions\queries">
       <UniqueIdentifier>{70161cfa-add4-41ca-96d9-c07072048b34}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\infrastructure">
+      <UniqueIdentifier>{896282d6-1c50-4bbe-8f9e-8c0d4df79498}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\actions\queries">
+      <UniqueIdentifier>{41b9b205-f298-400c-a00a-cd229470ce84}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -59,6 +65,12 @@
     </ClCompile>
     <ClCompile Include="count-command.cpp">
       <Filter>소스 파일\actions\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="credentials-manager.cpp">
+      <Filter>소스 파일\infrastructure</Filter>
+    </ClCompile>
+    <ClCompile Include="check-token-query.cpp">
+      <Filter>소스 파일\actions\queries</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +88,15 @@
     </ClInclude>
     <ClInclude Include="action-manager.h">
       <Filter>헤더 파일\core\actions</Filter>
+    </ClInclude>
+    <ClInclude Include="credentials-manager.h">
+      <Filter>헤더 파일\infrastructure</Filter>
+    </ClInclude>
+    <ClInclude Include="dependency-injection.h">
+      <Filter>헤더 파일\infrastructure</Filter>
+    </ClInclude>
+    <ClInclude Include="check-token-query.h">
+      <Filter>헤더 파일\core\actions\queries</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
