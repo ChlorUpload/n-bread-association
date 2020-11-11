@@ -2,8 +2,6 @@
 #define __H_CREDENTIALS_MANAGER__
 
 class CredentialsManager
-{
-
-};
+{};
 
 #endif

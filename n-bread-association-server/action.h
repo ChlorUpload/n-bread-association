@@ -10,7 +10,7 @@ struct Action
 };
 
 class ActionHandlerBase
-{ };
+{};
 
 template <typename ActionT>
 class ActionHandler : public ActionHandlerBase
@@ -18,7 +18,7 @@ class ActionHandler : public ActionHandlerBase
     struct Impl;
     std::unique_ptr<Impl> pImpl;
 
-public:
+  public:
     ActionHandler(DependencyInjection& di);
     ~ActionHandler();
 

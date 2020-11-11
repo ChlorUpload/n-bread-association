@@ -10,9 +10,7 @@ struct CountCommand : Action<void>
 {
     int param;
 
-    CountCommand(int param)
-        : param{param}
-    { }
+    CountCommand(int param) : param { param } {}
 };
 
 #endif

@@ -2,6 +2,6 @@
 #define __H_DB_CONTEXT__
 
 class DbContext
-{ };
+{};
 
 #endif

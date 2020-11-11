@@ -22,39 +22,38 @@ using RemoveAll = std::remove_const_t<std::remove_reference_t<T>>;
 
 struct Entry
 {
-private:
-    void* _data;
+  private:
+    void*                       _data;
     std::function<void*(void*)> _copier;
-    std::function<void(void*)> _deleter;
+    std::function<void(void*)>  _deleter;
 
-public:
-    Entry()
-        : _data{nullptr}
-    { }
+  public:
+    Entry() : _data { nullptr } {}
 
     template <typename T,
               std::enable_if_t<!std::is_same_v<RemoveAll<T>, Entry>, int> = 0>
-    Entry(T&& t)
-        : _data{new RemoveAll<T>{std::forward<T&&>(t)}}
-        , _copier{[](void* data) {
-            return new RemoveAll<T>{*reinterpret_cast<RemoveAll<T>*>(data)};
-        }}
-        , _deleter{
-              [](void* data) { delete reinterpret_cast<RemoveAll<T>*>(data); }}
-    { }
+    Entry(T&& t) :
+        _data { new RemoveAll<T> { std::forward<T&&>(t) } },
+        _copier { [](void* data) {
+            return new RemoveAll<T> { *reinterpret_cast<RemoveAll<T>*>(data) };
+        } },
+        _deleter { [](void* data) {
+            delete reinterpret_cast<RemoveAll<T>*>(data);
+        } }
+    {}
 
-    Entry(const Entry& entry)
-        : _data{entry._copier(entry._data)}
-        , _copier{entry._copier}
-        , _deleter{entry._deleter}
-    { }
+    Entry(const Entry& entry) :
+        _data { entry._copier(entry._data) },
+        _copier { entry._copier },
+        _deleter { entry._deleter }
+    {}
 
     ~Entry()
     {
         _deleter(_data);
     }
 
-public:
+  public:
     template <typename T>
     T& Get()
     {
@@ -72,21 +71,21 @@ template <typename T>
 std::pair<std::type_index, Entry> MakeKeyValuePair(T&& t)
 {
     using RemovedT = RemoveAll<T>;
-    return std::make_pair(std::type_index{typeid(RemovedT)},
-                          Entry{std::forward<T&&>(t)});
+    return std::make_pair(std::type_index { typeid(RemovedT) },
+                          Entry { std::forward<T&&>(t) });
 }
 
 template <typename T>
 T const&
 GetFromEntries(std::unordered_map<std::type_index, Entry> const& entries)
 {
-    return entries.at(std::type_index{typeid(T)}).Get<T>();
+    return entries.at(std::type_index { typeid(T) }).Get<T>();
 }
 
 template <typename T, typename TupleT, std::size_t... Indices>
 T Construct(TupleT&& tuple, std::index_sequence<Indices...>)
 {
-    return T{std::get<Indices>(std::forward<TupleT>(tuple))...};
+    return T { std::get<Indices>(std::forward<TupleT>(tuple))... };
 }
 
 template <typename TupleT, std::size_t... Indices>
@@ -104,7 +103,8 @@ T ConstructFromEntries(
 {
     using ParamType = typename T::ParamType;
 
-    auto idxSequence = std::make_index_sequence<std::tuple_size_v<ParamType>>{};
+    auto idxSequence
+        = std::make_index_sequence<std::tuple_size_v<ParamType>> {};
     ParamType tup = ConstructTupleFromEntries<ParamType>(entries, idxSequence);
     return Construct<T>(std::move(tup), idxSequence);
 }
@@ -113,18 +113,18 @@ T ConstructFromEntries(
 
 class DependencyInjection
 {
-private:
+  private:
     std::unordered_map<std::type_index, Entry> entries;
 
-public:
+  public:
     template <typename ServiceT>
     ServiceT& GetService()
     {
-        auto it = entries.find(std::type_index{typeid(ServiceT)});
-        if(it == entries.end())
+        auto it = entries.find(std::type_index { typeid(ServiceT) });
+        if (it == entries.end())
         {
-            std::tie(it, std::ignore) =
-                entries.insert(MakeKeyValuePair(ServiceT{}));
+            std::tie(it, std::ignore)
+                = entries.insert(MakeKeyValuePair(ServiceT {}));
         }
 
         return it->second.Get<ServiceT>();
