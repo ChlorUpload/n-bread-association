@@ -9,20 +9,19 @@
 
 #include "action.h"
 #include "count-command.h"
-#include "db-context.h"
+#include "dependency-injection.h"
 
 class ActionManager
 {
-    DbContext* _ctx;
+    DependencyInjection& _di;
 
     std::unordered_map<std::type_index, std::unique_ptr<ActionHandlerBase>>
         handlers;
 
 public:
-
     ActionManager() = delete;
-    ActionManager(DbContext* ctx)
-        : _ctx{ctx}
+    ActionManager(DependencyInjection& di)
+        : _di{di}
     { }
 
     template <typename ActionT>
@@ -35,14 +34,12 @@ public:
         auto it = handlers.find(std::type_index{typeid(ActionT)});
         if(it == handlers.end())
         {
-            it = handlers
-                     .insert(std::make_pair(
-                         std::type_index{typeid(ActionT)},
-                         std::make_unique<ActionHandler<ActionT>>(_ctx)))
-                     .first;
+            std::tie(it, std::ignore) = handlers.insert(
+                std::make_pair(std::type_index{typeid(ActionT)},
+                               std::make_unique<ActionHandler<ActionT>>(_di)));
         }
 
-        static_cast<ActionHandler<ActionT>*>(it->second.get())
+        return static_cast<ActionHandler<ActionT>*>(it->second.get())
             ->
             operator()(action);
     }

@@ -1,7 +1,7 @@
 #ifndef __H_ACTION__
 #define __H_ACTION__
 
-#include "db-context.h"
+#include "dependency-injection.h"
 
 template <typename T>
 struct Action
@@ -10,20 +10,17 @@ struct Action
 };
 
 class ActionHandlerBase
-{
-    DbContext* _ctx;
-
-public:
-    ActionHandlerBase(DbContext* ctx)
-        : _ctx{ctx}
-    { }
-};
+{ };
 
 template <typename ActionT>
 class ActionHandler : public ActionHandlerBase
 {
+    struct Impl;
+    std::unique_ptr<Impl> pImpl;
+
 public:
-    using ActionHandlerBase::ActionHandlerBase;
+    ActionHandler(DependencyInjection& di);
+    ~ActionHandler();
 
     typename ActionT::ReturnType operator()(ActionT const& action);
 };
