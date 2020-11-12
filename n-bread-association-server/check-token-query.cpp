@@ -8,16 +8,14 @@
 template <>
 struct ActionHandler<CheckTokenQuery>::Impl
 {
-    CredentialsService& cm;
-    DbContext&          ctx;
+    CredentialsService& cs;
 
-    Impl(CredentialsService& cm, DbContext& ctx) : cm { cm }, ctx { ctx } {}
+    Impl(CredentialsService& cs) : cs { cs } {}
 };
 
 template <>
 ActionHandler<CheckTokenQuery>::ActionHandler(DependencyInjection& di) :
-    pImpl { std::make_unique<Impl>(di.GetService<CredentialsService>(),
-                                   di.GetService<DbContext>()) }
+    pImpl { std::make_unique<Impl>(di.get_service<CredentialsService>()) }
 {}
 
 template <>
@@ -27,6 +25,5 @@ ActionHandler<CheckTokenQuery>::~ActionHandler()
 template <>
 bool ActionHandler<CheckTokenQuery>::operator()(CheckTokenQuery const& action)
 {
-    std::cout << action.access_token << std::endl;
-    return true;
+    return pImpl->cs.verify_token(action.access_token);
 }
