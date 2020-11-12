@@ -1,11 +1,11 @@
-#ifndef __H_CREDENTIALS_MANAGER__
-#define __H_CREDENTIALS_MANAGER__
+#ifndef __H_CREDENTIALS_SERVICE__
+#define __H_CREDENTIALS_SERVICE__
 
 #define SIGNATURE_LEN 20
 
 #include <string>
 
-class CredentialsManager
+class CredentialsService
 {
   private:
     std::string       _signature  = "";
@@ -13,11 +13,11 @@ class CredentialsManager
     const int         _expire_sec = 20000;
 
   public:
-    CredentialsManager();
+    CredentialsService();
 
-    std::string create_token(std::string const& user_id);
+    std::string create_token(int user_id);
     bool        verify_token(std::string const& token);
-    std::string get_user_id(std::string const& token);
+    int get_user_id(std::string const& token);
 };
 
 #endif

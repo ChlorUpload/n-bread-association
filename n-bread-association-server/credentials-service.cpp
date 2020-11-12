@@ -1,10 +1,10 @@
-#include "credentials-manager.h"
+#include "credentials-service.h"
 
 #include "jwt-cpp/jwt.h"
 
 #include <random>
 
-CredentialsManager::CredentialsManager()
+CredentialsService::CredentialsService()
 {
     std::random_device                 rd;
     std::mt19937                       gen { rd() };
@@ -19,7 +19,7 @@ CredentialsManager::CredentialsManager()
     // std::cout << "signature : " << _signature << std::endl;
 }
 
-std::string CredentialsManager::create_token(std::string const& user_id)
+std::string CredentialsService::create_token(int user_id)
 {
     return jwt::create()
         .set_issuer(_issuer)
@@ -27,11 +27,11 @@ std::string CredentialsManager::create_token(std::string const& user_id)
         .set_expires_at(std::chrono::system_clock::now()
                         + std::chrono::seconds { _expire_sec })
         .set_type("JWS")
-        .set_payload_claim("user_id", jwt::claim(user_id))
+        .set_payload_claim("user_id", jwt::claim(std::to_string(user_id)))
         .sign(jwt::algorithm::hs256 { _signature });
 }
 
-bool CredentialsManager::verify_token(std::string const& token)
+bool CredentialsService::verify_token(std::string const& token)
 {
     auto verifier = jwt::verify()
                         .allow_algorithm(jwt::algorithm::hs256 { _signature })
@@ -50,11 +50,21 @@ bool CredentialsManager::verify_token(std::string const& token)
     return true;
 }
 
-std::string CredentialsManager::get_user_id(std::string const& token)
+int CredentialsService::get_user_id(std::string const& token)
 {
     auto decoded = jwt::decode(token);
-
     auto claim = decoded.get_payload_claim("user_id");
 
-    return claim.as_string();
+    int ret = 0;
+    
+    try
+    {
+        ret = std::atoi(claim.as_string().c_str());
+    }
+    catch (...)
+    {
+        return -1;
+    }
+
+    return ret;
 }
