@@ -66,11 +66,17 @@
     <ClCompile Include="count-command.cpp">
       <Filter>소스 파일\actions\commands</Filter>
     </ClCompile>
-    <ClCompile Include="credentials-manager.cpp">
-      <Filter>소스 파일\infrastructure</Filter>
-    </ClCompile>
     <ClCompile Include="check-token-query.cpp">
       <Filter>소스 파일\actions\queries</Filter>
+    </ClCompile>
+    <ClCompile Include="credentials-service.cpp">
+      <Filter>소스 파일\infrastructure</Filter>
+    </ClCompile>
+    <ClCompile Include="encryption-service.cpp">
+      <Filter>소스 파일\infrastructure</Filter>
+    </ClCompile>
+    <ClCompile Include="db-context.cpp">
+      <Filter>소스 파일\infrastructure</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -89,14 +95,17 @@
     <ClInclude Include="action-manager.h">
       <Filter>헤더 파일\core\actions</Filter>
     </ClInclude>
-    <ClInclude Include="credentials-manager.h">
-      <Filter>헤더 파일\infrastructure</Filter>
-    </ClInclude>
     <ClInclude Include="dependency-injection.h">
       <Filter>헤더 파일\infrastructure</Filter>
     </ClInclude>
     <ClInclude Include="check-token-query.h">
       <Filter>헤더 파일\core\actions\queries</Filter>
+    </ClInclude>
+    <ClInclude Include="encryption-service.h">
+      <Filter>헤더 파일\infrastructure</Filter>
+    </ClInclude>
+    <ClInclude Include="credentials-service.h">
+      <Filter>헤더 파일\infrastructure</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

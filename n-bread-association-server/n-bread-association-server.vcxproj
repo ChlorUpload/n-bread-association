@@ -153,7 +153,9 @@
   <ItemGroup>
     <ClCompile Include="check-token-query.cpp" />
     <ClCompile Include="count-command.cpp" />
-    <ClCompile Include="credentials-manager.cpp" />
+    <ClCompile Include="credentials-service.cpp" />
+    <ClCompile Include="db-context.cpp" />
+    <ClCompile Include="encryption-service.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -164,9 +166,10 @@
     <ClInclude Include="action.h" />
     <ClInclude Include="check-token-query.h" />
     <ClInclude Include="count-command.h" />
-    <ClInclude Include="credentials-manager.h" />
+    <ClInclude Include="credentials-service.h" />
     <ClInclude Include="db-context.h" />
     <ClInclude Include="dependency-injection.h" />
+    <ClInclude Include="encryption-service.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
