@@ -171,13 +171,18 @@
     <ClInclude Include="action-manager.h" />
     <ClInclude Include="action.h" />
     <ClInclude Include="check-token-query.h" />
+    <ClInclude Include="controller-manager.h" />
+    <ClInclude Include="controller.h" />
     <ClInclude Include="count-command.h" />
     <ClInclude Include="credentials-service.h" />
     <ClInclude Include="db-context.h" />
     <ClInclude Include="dependency-injection.h" />
     <ClInclude Include="encryption-service.h" />
+    <ClInclude Include="login-controller.h" />
     <ClInclude Include="login-query.h" />
     <ClInclude Include="register-command.h" />
+    <ClInclude Include="request-handler.h" />
+    <ClInclude Include="session.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

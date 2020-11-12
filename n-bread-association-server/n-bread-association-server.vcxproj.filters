@@ -119,5 +119,20 @@
     <ClInclude Include="register-command.h">
       <Filter>헤더 파일\core\actions\commands</Filter>
     </ClInclude>
+    <ClInclude Include="request-handler.h">
+      <Filter>헤더 파일\api\web-server</Filter>
+    </ClInclude>
+    <ClInclude Include="session.h">
+      <Filter>헤더 파일\api\web-server</Filter>
+    </ClInclude>
+    <ClInclude Include="controller-manager.h">
+      <Filter>헤더 파일\api</Filter>
+    </ClInclude>
+    <ClInclude Include="controller.h">
+      <Filter>헤더 파일\api</Filter>
+    </ClInclude>
+    <ClInclude Include="login-controller.h">
+      <Filter>헤더 파일\api\controllers</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
