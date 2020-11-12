@@ -33,9 +33,10 @@ struct Entry
     template <typename T,
               std::enable_if_t<!std::is_same_v<RemoveAll<T>, Entry>, int> = 0>
     Entry(T&& t) :
-        _data { new RemoveAll<T> { std::forward<T&&>(t) } },
+        _data { new RemoveAll<T> { std::forward<T>(t) } },
         _copier { [](void* data) {
-            return new RemoveAll<T> { *reinterpret_cast<RemoveAll<T>*>(data) };
+            return new RemoveAll<T> { std::forward<T>(
+                *reinterpret_cast<RemoveAll<T>*>(data)) };
         } },
         _deleter { [](void* data) {
             delete reinterpret_cast<RemoveAll<T>*>(data);
@@ -118,7 +119,7 @@ class DependencyInjection
 
   public:
     template <typename ServiceT>
-    ServiceT& GetService()
+    ServiceT& get_service()
     {
         auto it = entries.find(std::type_index { typeid(ServiceT) });
         if (it == entries.end())
