@@ -36,11 +36,10 @@ bool CredentialsService::verify_token(std::string const& token)
     auto verifier = jwt::verify()
                         .allow_algorithm(jwt::algorithm::hs256 { _signature })
                         .with_issuer(_issuer);
-
-    auto decoded = jwt::decode(token);
-
+  
     try
     {
+        auto decoded = jwt::decode(token);
         verifier.verify(decoded);
     }
     catch (...)
@@ -52,13 +51,12 @@ bool CredentialsService::verify_token(std::string const& token)
 
 int CredentialsService::get_user_id(std::string const& token)
 {
-    auto decoded = jwt::decode(token);
-    auto claim = decoded.get_payload_claim("user_id");
-
     int ret = 0;
     
     try
-    {
+    {  
+        auto decoded = jwt::decode(token);
+        auto claim = decoded.get_payload_claim("user_id");
         ret = std::atoi(claim.as_string().c_str());
     }
     catch (...)
