@@ -31,12 +31,24 @@ class RequestHandler
     beast::string_view mime_type(beast::string_view path)
     {
         using beast::iequals;
-        auto const ext = [&path] {
-            auto const pos = path.rfind(".");
-            if (pos == beast::string_view::npos)
-                return beast::string_view { "command" };
-            return path.substr(pos);
-        }();
+
+        std::string path_no_query;
+        auto const  question_pos = path.find("?");
+        if (question_pos == std::string::npos)
+        { path_no_query = path.to_string(); }
+        else
+        {
+            path_no_query = path.substr(0, question_pos).to_string();
+        }
+
+        std::string ext;
+        auto const  pos = path_no_query.rfind(".");
+        if (pos == std::string::npos) { return "command"; }
+        else
+        {
+            ext = path_no_query.substr(pos);
+        }
+
         if (iequals(ext, ".htm")) return "text/html";
         if (iequals(ext, ".html")) return "text/html";
         if (iequals(ext, ".php")) return "text/html";
@@ -58,7 +70,6 @@ class RequestHandler
         if (iequals(ext, ".tif")) return "image/tiff";
         if (iequals(ext, ".svg")) return "image/svg+xml";
         if (iequals(ext, ".svgz")) return "image/svg+xml";
-        if (iequals(ext, "command")) return "command";
         return "application/text";
     }
 
@@ -199,9 +210,32 @@ class RequestHandler
         }
         else
         {
-            // command handling
-            std::cout << "incoming command :" << req.target() << std::endl;
-            return send(std::move(_cm.get_response(std::move(req))));
+
+            // Respond to HEAD request
+            if (req.method() == http::verb::head)
+            {
+                http::response<http::empty_body> res { http::status::ok,
+                                                       req.version() };
+                res.set(http::field::server, BOOST_BEAST_VERSION_STRING);
+                res.keep_alive(req.keep_alive());
+                return send(std::move(res));
+            }
+            else
+            {
+                try
+                {
+                    auto res = _cm.get_response(std::move(req));
+                    return send(std::move(res));
+                }
+                catch (...)
+                {
+                    return send(
+                        server_error("처리되지 않은 오류가 발생했습니다."));
+                }
+
+                // auto res = _cm.get_response(std::move(req));
+                // return send(std::move(res));
+            }
         }
     }
 };
