@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ActionManager" Collapsed="true">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAEAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>action-manager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ActionHandlerBase" Collapsed="true">
+    <Position X="3.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>action.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ActionHandler&lt;ActionT&gt;" Collapsed="true">
+    <Position X="3.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>oAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>action.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ControllerManager" Collapsed="true">
+    <Position X="11.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAIAACAAAAAAAAAAAAACAAAAQkAAIAA=</HashCode>
+      <FileName>controller-manager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Controller" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAQAAAAAAAAAAAAAAAAAAAAAAAAIAAIAA=</HashCode>
+      <FileName>controller.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoginController" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAIAA=</HashCode>
+      <FileName>login-controller.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequestHandler" Collapsed="true">
+    <Position X="10" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAACAAAABAAAAAAAAAAgAAAAAABAAA=</HashCode>
+      <FileName>request-handler.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Session" Collapsed="true">
+    <Position X="11.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAIAAAAQgAAAAAAAAAAAAIIAAAACAgAEAAAAA=</HashCode>
+      <FileName>session.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CredentialsService" Collapsed="true">
+    <Position X="13.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAACEAAAAgCAAAAAgAAgAAAAAAAAA=</HashCode>
+      <FileName>credentials-service.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DbContext" Collapsed="true">
+    <Position X="10" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAABAQAAAAIAFAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>db-context.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DependencyInjection" Collapsed="true">
+    <Position X="11.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>dependency-injection.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EncryptionService" Collapsed="true">
+    <Position X="13.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAACAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>encryption-service.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Action&lt;T&gt;" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>action.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="CountCommand" Collapsed="true">
+    <Position X="7.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>count-command.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="RegisterCommand" Collapsed="true">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAEAACgAAAAAgAAAAA=</HashCode>
+      <FileName>register-command.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="CheckTokenQuery" Collapsed="true">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>check-token-query.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="LoginQuery" Collapsed="true">
+    <Position X="5.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAgAAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>login-query.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Entry" Collapsed="true">
+    <Position X="10" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgCQAAAABAAAAABAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>dependency-injection.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="LoginState" Collapsed="true">
+    <Position X="10" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAABAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>login-query.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>
