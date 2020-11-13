@@ -17,7 +17,7 @@ class CredentialsService
 
     std::string create_token(int user_id);
     bool        verify_token(std::string const& token);
-    int get_user_id(std::string const& token);
+    int         get_user_id(std::string const& token);
 };
 
 #endif
