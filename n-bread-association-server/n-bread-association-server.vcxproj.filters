@@ -58,6 +58,12 @@
     <Filter Include="소스 파일\actions\queries">
       <UniqueIdentifier>{41b9b205-f298-400c-a00a-cd229470ce84}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\api">
+      <UniqueIdentifier>{0b3da366-7d39-4552-a3b8-c06f2f7a0d9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\api\controllers">
+      <UniqueIdentifier>{330eed47-e082-48c2-b634-21991507c0ca}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -83,6 +89,9 @@
     </ClCompile>
     <ClCompile Include="register-command.cpp">
       <Filter>소스 파일\actions\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="controller-manager.cpp">
+      <Filter>소스 파일\api</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

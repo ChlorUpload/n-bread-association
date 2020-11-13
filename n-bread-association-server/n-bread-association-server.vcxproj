@@ -156,6 +156,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="check-token-query.cpp" />
+    <ClCompile Include="controller-manager.cpp" />
     <ClCompile Include="count-command.cpp" />
     <ClCompile Include="credentials-service.cpp" />
     <ClCompile Include="db-context.cpp" />
