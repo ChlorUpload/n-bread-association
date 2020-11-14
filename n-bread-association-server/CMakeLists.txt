@@ -1,4 +1,4 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 3.13.1)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.17.2)
 
 PROJECT(n-bread-association-server)
 
@@ -45,4 +45,11 @@ target_link_libraries(
     ${MYSQL_CON}/libssl.lib
     ${MYSQL_CON}/mysqlcppconn.lib
     ws2_32.lib
+)
+
+add_custom_command(
+    TARGET server POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different ${PROJECT_SOURCE_DIR}/data/libcrypto-1_1-x64.dll libcrypto-1_1-x64.dll
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different ${PROJECT_SOURCE_DIR}/data/libssl-1_1-x64.dll libssl-1_1-x64.dll
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different ${PROJECT_SOURCE_DIR}/data/mysqlcppconn-7-vs14.dll mysqlcppconn-7-vs14.dll
 )
