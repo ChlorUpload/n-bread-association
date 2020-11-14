@@ -10,6 +10,9 @@ set(CMAKE_BUILD_TYPE Release)
 
 include(data/dir.txt)
 
+set(JWT       "libs/jwt-cpp/include")
+set(JSON      "libs/nlohmann-json/include")
+
 include_directories(
     header/api
     header/core
