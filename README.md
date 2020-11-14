@@ -17,8 +17,10 @@ online.
 프로젝트 `n-bread-association-exercise` 는 OOP 원정대원의 C++ 실력을 기르기 위해 진행한 모의 팀프로젝트로 단항식과 다항식을 간단하게 구현했습니다.
 
 ### 2. n-bread-association-server-exercise
-프로젝트 `n-bread-association-server-exercise` 는 Boost Beast 를 이용한 Asynchronous, Multithread 를 지원하는 웹 서버를 만들고 연습하기 위해서 만들어진 프로젝트입니다.
+프로젝트 `n-bread-association-server-exercise` 는 Boost Beast 를 이용하여 간단한 서버를 만들고 연습하기 위해서 만들어진 프로젝트입니다.
 
+### 3. n-bread-association-server
+프로젝트 ...
 
 ## timeline
 
