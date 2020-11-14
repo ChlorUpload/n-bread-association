@@ -1,6 +1,0 @@
-set(MYSQL_CON "<your-mysql-connector-lib64/vsNN-directory>")
-set(JSON      "<your-nlohmann-json/include-directory>")
-set(BOOST     "<your-boost_1_74_0-directory>")
-set(MYSQL     "<your-mysql-connector-include-directory>")
-set(OPENSSL   "<your-OpenSSL-Win64-include-directory>")
-set(JWT       "<your-jwt-cpp/include-directory>")
