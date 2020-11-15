@@ -8,8 +8,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_BUILD_TYPE Release)
 
-include(data/dir.txt)
-
 set(JWT       "libs/jwt-cpp/include")
 set(JSON      "libs/nlohmann-json/include")
 
