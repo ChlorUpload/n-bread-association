@@ -10,6 +10,7 @@ set(CMAKE_BUILD_TYPE Release)
 
 set(JWT       "libs/jwt-cpp/include")
 set(JSON      "libs/nlohmann-json/include")
+set(OPENSSL   "libs/openssl/include")
 
 include_directories(
     header/api
