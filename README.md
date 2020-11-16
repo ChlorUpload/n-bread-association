@@ -32,12 +32,12 @@ online.
 2020-10-27. 애플리케이션 디자인 초안 및 Proposal 작성  
 2020-11-01. Github repository 생성 및 test project 실습  
 2020-11-03. 테스트 서버 작성, Git 활용법 및 C++ 실습 진행  
-2020-11-08. 세부사항 기획, 디자인 개선, 데이터베이스 설계 작업 진행
-2020-11-11. Infrastructure, Core 계층 추가
-2020-11-12. MySQL, OpenSSL, jwt 등의 인프라 구현
-2020-11-13. API 계층 추가, 웹 서버 구현
-2020-11-14. `n-bread-association-server` 프로젝트의 프레임워크 완성
-2020-11-15. 프로젝트 `n-bread-association-server`를 관리하기 위해 CMake 통합
+2020-11-08. 세부사항 기획, 디자인 개선, 데이터베이스 설계 작업 진행  
+2020-11-11. Infrastructure, Core 계층 추가  
+2020-11-12. MySQL, OpenSSL, jwt 등의 인프라 구현  
+2020-11-13. API 계층 추가, 웹 서버 구현  
+2020-11-14. `n-bread-association-server` 프로젝트의 프레임워크 완성  
+2020-11-15. 프로젝트 `n-bread-association-server`를 관리하기 위해 CMake 통합  
 
 ## design
 
