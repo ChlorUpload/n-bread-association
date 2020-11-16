@@ -2,7 +2,6 @@
 #define __H_ACTION_MANAGER__
 
 #include "action.h"
-#include "count-command.h"
 #include "dependency-injection.h"
 
 #include <memory>

@@ -1,6 +1,5 @@
 #include "action-manager.h"
 #include "check-token-query.h"
-#include "count-command.h"
 #include "credentials-service.h"
 #include "db-context.h"
 #include "dependency-injection.h"
