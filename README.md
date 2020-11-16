@@ -20,7 +20,11 @@ online.
 프로젝트 `n-bread-association-server-exercise` 는 Boost Beast 를 이용하여 간단한 서버를 만들고 연습하기 위해서 만들어진 프로젝트입니다.
 
 ### 3. n-bread-association-server
-프로젝트 ...
+프로젝트 `n-bread-association-server`는 웹 서버와 웹 애플리케이션 서버가 합쳐진 CMake로 관리되는 프로젝트입니다.
+
+클래스 다이어그램
+![클래스 다이어그램](https://github.com/ChlorUpload/n-bread-association/blob/master/n-bread-association-server/class%20diagram.png?raw=true)
+
 
 ## timeline
 
