@@ -1,7 +1,7 @@
 #include "controller-manager.h"
 
 std::unordered_map<std::string, std::string>
-ControllerManager::_parse_query_str(std::string query_str)
+ControllerManager::_parse_query_str(std::string const& query_str)
 {
     std::unordered_map<std::string, std::string> map;
 
@@ -21,16 +21,16 @@ ControllerManager::_parse_query_str(std::string query_str)
     return map;
 }
 
-std::string ControllerManager::_decode(std::string const& input)
+std::string ControllerManager::_decode(std::string const& str)
 {
     std::string dst;
-    // dst.reserve(input.size());
+    // dst.reserve(str.size());
     char   a, b;
     size_t prev_pos = 0, pos = 0;
-    while ((pos = input.find('%', pos + 3)) != std::string::npos)
+    while ((pos = str.find('%', pos + 3)) != std::string::npos)
     {
-        a = input[pos + 1];
-        b = input[pos + 2];
+        a = str[pos + 1];
+        b = str[pos + 2];
 
         if (isxdigit(a) && isxdigit(b))
         {
@@ -43,20 +43,20 @@ std::string ControllerManager::_decode(std::string const& input)
             else
                 b -= '0';
 
-            dst += input.substr(prev_pos, pos - prev_pos);
+            dst += str.substr(prev_pos, pos - prev_pos);
             dst.push_back(static_cast<const char>(16 * a + b));
 
             prev_pos = pos + 3;
         }
     }
 
-    dst += input.substr(prev_pos, std::string::npos);
+    dst += str.substr(prev_pos, std::string::npos);
 
     return dst;
 }
 
 std::pair<std::string, std::string>
-ControllerManager::_decompose(std::string str)
+ControllerManager::_decompose(std::string const& str)
 {
     auto question_pos = str.find('?');
     if (question_pos == std::string::npos)

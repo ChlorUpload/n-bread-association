@@ -29,31 +29,31 @@ class Session
     // This is the C++11 equivalent of a generic lambda.
     // The function object is used to send an HTTP message.
     template <class Stream>
-    struct send_lambda
+    struct SendLambda
     {
-        Stream&            stream_;
-        bool&              close_;
-        beast::error_code& ec_;
+        Stream&            _stream;
+        bool&              _close;
+        beast::error_code& _ec;
 
-        explicit send_lambda(Stream&            stream,
+        explicit SendLambda(Stream&            stream,
                              bool&              close,
                              beast::error_code& ec) :
-            stream_(stream),
-            close_(close),
-            ec_(ec)
+            _stream(stream),
+            _close(close),
+            _ec(ec)
         {}
 
         template <bool isRequest, class Body, class Fields>
         void operator()(http::message<isRequest, Body, Fields>&& msg) const
         {
             // Determine if we should close the connection after
-            close_ = msg.need_eof();
+            _close = msg.need_eof();
 
             // We need the serializer here because the serializer requires
             // a non-const file_body, and the message oriented version of
             // http::write only works with const messages.
             http::serializer<isRequest, Body, Fields> sr { msg };
-            http::write(stream_, sr, ec_);
+            http::write(_stream, sr, _ec);
         }
     };
 
@@ -68,7 +68,7 @@ class Session
         beast::flat_buffer buffer;
 
         // This lambda is used to send messages
-        send_lambda<tcp::socket> lambda { socket, close, ec };
+        SendLambda<tcp::socket> lambda { socket, close, ec };
 
         for (;;)
         {
@@ -100,14 +100,14 @@ class Session
     const unsigned short               _port;
     std::shared_ptr<std::string> const _doc_root;
 
-    RequestHandler& _rh;
+    RequestHandler _rh;
 
   public:
-    Session(RequestHandler&                 rh,
+    Session(ControllerManager&              cm,
             boost::asio::ip::address const& address,
             const unsigned short            port,
             const char*                     doc_root) :
-        _rh { rh },
+        _rh { cm },
         _ioc { 1 },
         _address { address },
         _port { port },

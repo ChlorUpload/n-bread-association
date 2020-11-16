@@ -16,7 +16,7 @@ class ActionManager
     DependencyInjection& _di;
 
     std::unordered_map<std::type_index, std::unique_ptr<ActionHandlerBase>>
-        handlers;
+        _handlers;
 
   public:
     ActionManager() = delete;
@@ -29,10 +29,10 @@ class ActionManager
             std::is_base_of_v<Action<typename ActionT::ReturnType>, ActionT>,
             "ActionT must be derived from Action<T>");
 
-        auto it = handlers.find(std::type_index { typeid(ActionT) });
-        if (it == handlers.end())
+        auto it = _handlers.find(std::type_index { typeid(ActionT) });
+        if (it == _handlers.end())
         {
-            std::tie(it, std::ignore) = handlers.insert(
+            std::tie(it, std::ignore) = _handlers.insert(
                 std::make_pair(std::type_index { typeid(ActionT) },
                                std::make_unique<ActionHandler<ActionT>>(_di)));
         }
