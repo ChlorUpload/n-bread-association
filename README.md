@@ -1,7 +1,9 @@
-![overview](scrollable.png)
+![logo](web1.png)
 
 # n-bread-association
 An application helps DGIST members buy bundled product together.
+
+![overview](web2.png)
 
 ## purpose
 When shopping online, bundled products are usually less expensive than those sold in
@@ -25,7 +27,7 @@ online.
 프로젝트 `n-bread-association-server`는 웹 서버와 웹 애플리케이션 서버가 합쳐진 CMake로 관리되는 프로젝트입니다.
 
 현재 클래스 다이어그램
-![클래스 다이어그램](n-bread-association-server/class diagram.png)
+![클래스 다이어그램](n-bread-association-server/class-diagram.png)
 
 종속성 정보  
 [종속성 정보](n-bread-association-server/readme.md)
