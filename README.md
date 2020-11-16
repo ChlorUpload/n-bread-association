@@ -25,6 +25,8 @@ online.
 현재 클래스 다이어그램
 ![클래스 다이어그램](https://github.com/ChlorUpload/n-bread-association/blob/master/n-bread-association-server/class%20diagram.png?raw=true)
 
+종속성 정보  
+[종속성 정보](n-bread-association-server/readme.md)
 
 ## timeline
 
