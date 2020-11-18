@@ -27,6 +27,14 @@ online.
 프로젝트 `n-bread-association-server`는 웹 서버와 웹 애플리케이션 서버가 합쳐진 CMake로 관리되는 프로젝트입니다.
 
 현재 클래스 다이어그램
+
+파란색 : API
+주황색 : Core
+보라색 : Domain
+초록색 : Infrastructure
+
+![양파 껍질 구조](n-bread-association-server/onion-architecture.png)
+
 ![클래스 다이어그램](n-bread-association-server/class-diagram2.png)
 
 종속성 정보  
@@ -44,6 +52,7 @@ online.
 2020-11-13. API 계층 추가, 웹 서버 구현  
 2020-11-14. `n-bread-association-server` 프로젝트의 프레임워크 완성  
 2020-11-15. 프로젝트 `n-bread-association-server`를 관리하기 위해 CMake 통합  
+2020-11-17. 모델과 실제 DB간의 커플링 해제
 
 ## design
 
