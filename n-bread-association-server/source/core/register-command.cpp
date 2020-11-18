@@ -3,6 +3,7 @@
 #include "db-context.h"
 #include "encryption-service.h"
 
+#include <algorithm>
 #include <iostream>
 #include <memory>
 
@@ -28,9 +29,20 @@ ActionHandler<RegisterCommand>::~ActionHandler()
 template <>
 bool ActionHandler<RegisterCommand>::operator()(RegisterCommand const& action)
 {
-    if (pImpl->ctx.get_user_id(action.email) != -1) { return false; }
+    std::vector<User> const& v = pImpl->ctx.read<User>();
+    auto user_it = std::find_if(v.begin(), v.end(), [&](User const& u) {
+        return u.email == action.email;
+    });
 
-    std::string encrypted_pw = pImpl->es.encrypt(action.password);
-    pImpl->ctx.add_user(action.name, action.email, encrypted_pw, action.phone);
+    if (user_it != v.end()) { return false; }
+
+    User user;
+    user.email        = action.email;
+    user.encrypted_pw = pImpl->es.encrypt(action.password);
+    user.name         = action.name;
+    user.phone        = action.phone;
+    user.verified     = false;
+
+    pImpl->ctx.create<User>(user);
     return true;
 }
