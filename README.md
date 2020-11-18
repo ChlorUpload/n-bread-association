@@ -33,7 +33,7 @@ online.
 보라색 : Domain
 초록색 : Infrastructure
 
-![양파 껍질 구조](n-bread-association-server/onion-architecture.png)
+![양파 껍질 구조](n-bread-association-server/onion-architecture2.png)
 
 ![클래스 다이어그램](n-bread-association-server/class-diagram2.png)
 
