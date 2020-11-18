@@ -35,7 +35,7 @@ online.
 
 ![양파 껍질 구조](n-bread-association-server/onion-architecture2.png)
 
-![클래스 다이어그램](n-bread-association-server/class-diagram2.png)
+![클래스 다이어그램](n-bread-association-server/class-diagram3.png)
 
 종속성 정보  
 [종속성 정보](n-bread-association-server/readme.md)
