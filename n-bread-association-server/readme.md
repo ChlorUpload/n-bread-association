@@ -16,10 +16,6 @@ variables 프로퍼티의 value를 다음과 같이 구성합니다.
         {
           "name": "MYSQL",
           "value": "<your-mysql-connector-include-directory>"
-        },
-        {
-          "name": "OPENSSL",
-          "value": "<your-OpenSSL-Win64-include-directory>"
         }
       ]
 ```
@@ -52,10 +48,6 @@ CMakeSettings.json 예시
         {
           "name": "MYSQL",
           "value": "C:/Program Files/MySQL/MySQL Connector C++ 8.0/include"
-        },
-        {
-          "name": "OPENSSL",
-          "value": "C:/Program Files/OpenSSL-Win64/include"
         }
       ]
     }
