@@ -10,6 +10,9 @@
 /// </summary>
 struct CheckTokenQuery : Action<bool>
 {
+    /// <summary>
+    /// 액세스 토큰
+    /// </summary>
     std::string access_token;
 
     CheckTokenQuery(std::string const& access_token) :

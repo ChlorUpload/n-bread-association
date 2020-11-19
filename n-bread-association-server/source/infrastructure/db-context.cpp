@@ -101,7 +101,7 @@ std::vector<User> const& DbContext::read<User>()
 /* create */
 
 template <>
-bool DbContext::create<Category>(Category const& model)
+bool DbContext::create<Category>(Category& model)
 {
     std::unique_ptr<sql::PreparedStatement> pre_stmt { _con->prepareStatement(
         "INSERT INTO `nba`.`categories` (`name`) VALUES (?)") };
@@ -110,16 +110,15 @@ bool DbContext::create<Category>(Category const& model)
 
     pre_stmt->executeUpdate();
 
-    Category c = model;
-    c.id       = get_last_id();
-    if (c.id == -1) return false;
+    model.id = get_last_id();
+    if (model.id == -1) return false;
 
-    _categories.push_back(c);
+    _categories.push_back(model);
     return true;
 }
 
 template <>
-bool DbContext::create<CategoryProductMap>(CategoryProductMap const& model)
+bool DbContext::create<CategoryProductMap>(CategoryProductMap& model)
 {
     std::unique_ptr<sql::PreparedStatement> pre_stmt { _con->prepareStatement(
         "INSERT INTO `nba`.`categoryproducts` (`category_id`, `product_id`) "
@@ -130,16 +129,15 @@ bool DbContext::create<CategoryProductMap>(CategoryProductMap const& model)
 
     pre_stmt->executeUpdate();
 
-    CategoryProductMap cpm = model;
-    cpm.id                 = get_last_id();
-    if (cpm.id == -1) return false;
+    model.id = get_last_id();
+    if (model.id == -1) return false;
 
-    _cp_map.push_back(cpm);
+    _cp_map.push_back(model);
     return true;
 }
 
 template <>
-bool DbContext::create<Product>(Product const& model)
+bool DbContext::create<Product>(Product& model)
 {
     std::unique_ptr<sql::PreparedStatement> pre_stmt { _con->prepareStatement(
         "INSERT INTO `nba`.`products` (`title`, `host_id`, `price`, "
@@ -156,17 +154,18 @@ bool DbContext::create<Product>(Product const& model)
     pre_stmt->setInt(8, static_cast<int>(model.deliver));
     pre_stmt->setString(9, time_to_str(model.created_at));
     pre_stmt->setString(10, time_to_str(model.expires_at));
+    
+    pre_stmt->executeUpdate();
 
-    Product p = model;
-    p.id      = get_last_id();
-    if (p.id == -1) return false;
+    model.id = get_last_id();
+    if (model.id == -1) return false;
 
-    _products.push_back(p);
+    _products.push_back(model);
     return true;
 }
 
 template <>
-bool DbContext::create<MemberProductMap>(MemberProductMap const& model)
+bool DbContext::create<MemberProductMap>(MemberProductMap& model)
 {
     std::unique_ptr<sql::PreparedStatement> pre_stmt { _con->prepareStatement(
         "INSERT INTO `nba`.`memberproducts` (`member_id`, `product_id`, "
@@ -178,16 +177,15 @@ bool DbContext::create<MemberProductMap>(MemberProductMap const& model)
 
     pre_stmt->executeUpdate();
 
-    MemberProductMap mpm = model;
-    mpm.id               = get_last_id();
-    if (mpm.id == -1) return false;
+    model.id = get_last_id();
+    if (model.id == -1) return false;
 
-    _mp_map.push_back(mpm);
+    _mp_map.push_back(model);
     return true;
 }
 
 template <>
-bool DbContext::create<User>(User const& model)
+bool DbContext::create<User>(User& model)
 {
     std::unique_ptr<sql::PreparedStatement> pre_stmt { _con->prepareStatement(
         "INSERT INTO `nba`.`users` (`name`, `email`, `password`, "
@@ -200,11 +198,10 @@ bool DbContext::create<User>(User const& model)
 
     pre_stmt->executeUpdate();
 
-    User u = model;
-    u.id   = get_last_id();
-    if (u.id == -1) return false;
+    model.id = get_last_id();
+    if (model.id == -1) return false;
 
-    _users.push_back(u);
+    _users.push_back(model);
     return true;
 }
 

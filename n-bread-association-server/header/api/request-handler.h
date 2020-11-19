@@ -238,9 +238,6 @@ class RequestHandler
                     return send(
                         server_error(u8"처리되지 않은 오류가 발생했습니다."));
                 }
-
-                // auto res = _cm.get_response(std::move(req));
-                // return send(std::move(res));
             }
         }
     }

@@ -7,14 +7,27 @@
 
 using json = nlohmann::json;
 
+/// <summary>
+/// 컨트롤러의 베이스 클래스. 모든 컨트롤러는 이 클래스를 상속합니다.
+/// </summary>
 class Controller
 {
   protected:
+    /// <summary>
+    /// 컨트롤러는 액션 매니저에게 액션 실행을 요청합니다.
+    /// </summary>
     ActionManager& _am;
 
   public:
+    /// <summary>
+    /// 컨트롤러가 반환하는 타입. 리스폰스 상태, 실패 코드, 로그, 정보를 담은
+    /// JSON 객체를 담는 클래스.
+    /// </summary>
     struct ControllerResp
     {
+        /// <summary>
+        /// 요청 상태
+        /// </summary>
         enum class req_status
         {
             /// <summary>
@@ -27,6 +40,9 @@ class Controller
             failed = 1,
         };
 
+        /// <summary>
+        /// 실패 코드
+        /// </summary>
         enum class failure_code
         {
             /// <summary>
@@ -59,10 +75,19 @@ class Controller
 
     Controller(ActionManager& am) : _am { am } {}
 
+    /// <summary>
+    /// 컨트롤러에게 params 객체를 주고 ControllerResp 객체를 받아옵니다.
+    /// </summary>
+    /// <param name="params">쿼리 스트링의 좌변을 key로, 우변을 value로 갖는 map</param>
+    /// <returns></returns>
     virtual ControllerResp
     get_response(std::unordered_map<std::string, std::string> params)
         = 0;
 
+    /// <summary>
+    /// 컨트롤러의 이름을 받아옵니다.
+    /// </summary>
+    /// <returns>컨트롤러 이름</returns>
     virtual std::string get_name() = 0;
 };
 

@@ -112,15 +112,30 @@ T ConstructFromEntries(
 
 #pragma endregion
 
+/// <summary>
+/// ASP.NET Core의 DependencyInjection을 참고해서 만든 클래스. 싱글톤 패턴을
+/// 사용하지 않고 한 개의 인스턴스로 서비스를 관리하며, 서비스들을 액션 핸들러
+/// 등의 로직을 처리하는 객체에서 쉽게 받아올 수 있도록 도와주는 역할을 합니다.
+/// </summary>
 class DependencyInjection
 {
   private:
+    /// <summary>
+    /// 어떤 서비스라도 저장할 수 있는 객체
+    /// </summary>
     std::unordered_map<std::type_index, Entry> entries;
 
   public:
+    /// <summary>
+    /// 템플릿 인수로 들어온 서비스 인스턴스를 반환합니다.
+    /// </summary>
+    /// <typeparam name="ServiceT">사용할 서비스</typeparam>
+    /// <returns>서비스 인스턴스</returns>
     template <typename ServiceT>
     ServiceT& get_service()
     {
+        // 서비스 인스턴스를 가지고 있는지 확인해서 있다면 이를 반환하고 그렇지
+        // 않다면 새로 인스턴스를 생성해서 반환합니다.
         auto it = entries.find(std::type_index { typeid(ServiceT) });
         if (it == entries.end())
         {

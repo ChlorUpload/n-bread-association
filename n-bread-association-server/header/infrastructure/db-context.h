@@ -18,7 +18,7 @@
 #include <vector>
 
 /// <summary>
-/// 모델의 이터레이터
+/// 모델의 포워드 이터레이터
 /// </summary>
 /// <typeparam name="T">모델 타입</typeparam>
 template <typename T>
@@ -149,12 +149,12 @@ class DbContext
 
     /// <summary>
     /// DB와 모델에 정보를 추가하는 함수. model을 채워서 넘기되, id는 비워
-    /// 두세요.
+    /// 두세요. id가 자동으로 추가됩니다.
     /// </summary>
     /// <typeparam name="T">모델 타입</typeparam>
     /// <param name="model">모델</param>
     template <typename T>
-    bool create(T const& model);
+    bool create(T& model);
 
     /// <summary>
     /// DB와 모델의 정보를 수정하는 함수.
