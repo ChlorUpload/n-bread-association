@@ -86,7 +86,7 @@ Public Queries
 | GetCategories     | N/A        | Category[]        | 카테고리 목록을 가져옵니다.                               |                |        |
 | SearchProducts    | string     | ProductView[]     | 주어진 문자열을 제목에 포함하는 상품 목록을 가져옵니다.     |                |        |
 | GetProductDetail  | productId  | ProductDetailView | 주어진 id의 상품의 세부  정보를 가져옵니다.                |                |        |
-
+| Login             | email, password | LoginState, AccessToken  | 이메일과 비밀번호를 받아 액세스 토큰을 받아옵니다. | 송대건 | N |
  
 
 Restricted Queries
