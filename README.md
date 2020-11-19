@@ -35,7 +35,7 @@ online.
 
 ![양파 껍질 구조](n-bread-association-server/onion-architecture2.png)
 
-![클래스 다이어그램](n-bread-association-server/class-diagram2.png)
+![클래스 다이어그램](n-bread-association-server/class-diagram3.png)
 
 종속성 정보  
 [종속성 정보](n-bread-association-server/readme.md)
@@ -80,37 +80,37 @@ ViewModels
 
 Public Queries
 
-| Name              | Parameters | Return            | Description                                             |
-| ----------------- | ---------- | ----------------- | ------------------------------------------------------- |
-| PublicGetProducts | Category[] | ProductView[]     | 주어진 카테고리에 속하는 상품 목록을 가져옵니다.        |
-| GetCategories     | N/A        | Category[]        | 카테고리 목록을 가져옵니다.                             |
-| SearchProducts    | string     | ProductView[]     | 주어진 문자열을 제목에 포함하는 상품 목록을 가져옵니다. |
-| GetProductDetail  | productId  | ProductDetailView | 주어진 id의 상품의 세부  정보를 가져옵니다.             |
-
+| Name              | Parameters | Return            | Description                                             | Implemented by | Tested |
+| ----------------- | ---------- | ----------------- | ------------------------------------------------------- |----------------|--------|
+| PublicGetProducts | Category[] | ProductView[]     | 주어진 카테고리에 속하는 상품 목록을 가져옵니다.            |                |        |
+| GetCategories     | N/A        | Category[]        | 카테고리 목록을 가져옵니다.                               |                |        |
+| SearchProducts    | string     | ProductView[]     | 주어진 문자열을 제목에 포함하는 상품 목록을 가져옵니다.     |                |        |
+| GetProductDetail  | productId  | ProductDetailView | 주어진 id의 상품의 세부  정보를 가져옵니다.                |                |        |
+| Login             | email, password | LoginState, AccessToken  | 이메일과 비밀번호를 받아 액세스 토큰을 받아옵니다. | 송대건 | N |
  
 
 Restricted Queries
 
-| Name              | Parameters                                 | Return             | Description                                                  |
-| ----------------- | ------------------------------------------ | ------------------ | ------------------------------------------------------------ |
-| GetProducts       | AccessToken,  Category[],  Enum MemberType | ProductView[]      | 멤버 유형에 따라 주어진 카테고리에 속하는 상품 목록을 가져옵니다. PublicGetProducts은 멤버 상태를 public으로만  반환하는 것과 달리 나의 멤버 상태를 추가적으로 받아올 수 있습니다. |
-| GetProfile        | AccessToken                                | ProfileView        | 내 프로필 정보를 가져옵니다.                                 |
-| GetProductNonhost | AccessToken  ProductId                     | ProductNonhostView | Nonhost멤버에게 필요한 상품 상세 정보를 가져옵니다. Nonhost가 아닌 유저가 요청하면 Privilege Exception을  throw합니다. |
-| GetProductHost    | AccessToken  ProductId                     | ProductHostView    | Host멤버에게 필요한 상품 상세 정보를 가져옵니다.  Host가 아닌 유저가 요청하면 Privilege  Exception을 throw합니다. |
-| GetMemberType     | AccessToken  ProductId                     | Enum MemberType    | 나의 멤버 상태를 받아옵니다.                                 |
+| Name              | Parameters                                 | Return             | Description                                                  | Implemented by | Tested |
+| ----------------- | ------------------------------------------ | ------------------ | ------------------------------------------------------------ | ---------------|-------|
+| GetProducts       | AccessToken,  Category[],  Enum MemberType | ProductView[]      | 멤버 유형에 따라 주어진 카테고리에 속하는 상품 목록을 가져옵니다. PublicGetProducts은 멤버 상태를 public으로만  반환하는 것과 달리 나의 멤버 상태를 추가적으로 받아올 수 있습니다. | | |
+| GetProfile        | AccessToken                                | ProfileView        | 내 프로필 정보를 가져옵니다.                                 | | |
+| GetProductNonhost | AccessToken  ProductId                     | ProductNonhostView | Nonhost멤버에게 필요한 상품 상세 정보를 가져옵니다. Nonhost가 아닌 유저가 요청하면 Privilege Exception을  throw합니다. | | |
+| GetProductHost    | AccessToken  ProductId                     | ProductHostView    | Host멤버에게 필요한 상품 상세 정보를 가져옵니다.  Host가 아닌 유저가 요청하면 Privilege  Exception을 throw합니다. | | |
+| GetMemberType     | AccessToken  ProductId                     | Enum MemberType    | 나의 멤버 상태를 받아옵니다.                                 | | |
 
  
 
 Commands
 
-| Name             | Parameters                                 | Return        | Description                                                  |
-| ---------------- | ------------------------------------------ | ------------- | ------------------------------------------------------------ |
-| CancelMembership | AccessToken                                | bool          | 회원을 탈퇴하고 성공 여부를 반환합니다.                      |
-| SetDepositState  | AccessToken  userId  productId  bool       | bool          | 유저의 입금 상태를 변경하고 성공 여부를 반환합니다. 내가 Host가 아닐 경우에는 Privilege Exception을 throw합니다. User가 Product의 Member가  아닐 경우에는 Invalid access Exception을 throw합니니다. |
-| SetDeliveryState | AccessToken  ProductId  Enum DeliveryState | bool          | 상품의 배송 상태를 변경하고 성공 여부를 반환합니다. 내가 Host가 아닐 경우에는 Privilege Exception을 throw합니다. |
-| SetAnnounce      | AccessToken  ProductId  string             | bool          | 상품의 공지사항을 변경하고 성공 여부를 반환합니다. 내가 Host가 아닐 경우에는 Privilege Exception을 throw합니다. |
-| RegisterProduct  | AccessToken  Product                       | Int ProductId | 상품 등록 정보를 받아 상품을 등록합니다. 상품 등록 후 ProductId를 반환합니다. 만약 등록이 실패한다면 -1을 반환합니다. |
-
+| Name             | Parameters                                 | Return        | Description                                                  | Implemented by | Tested |
+| ---------------- | ------------------------------------------ | ------------- | ------------------------------------------------------------ | -------------- | ------ |
+| CancelMembership | AccessToken                                | bool          | 회원을 탈퇴하고 성공 여부를 반환합니다.                      | | |
+| SetDepositState  | AccessToken  userId  productId  bool       | bool          | 유저의 입금 상태를 변경하고 성공 여부를 반환합니다. 내가 Host가 아닐 경우에는 Privilege Exception을 throw합니다. User가 Product의 Member가  아닐 경우에는 Invalid access Exception을 throw합니니다. | | |
+| SetDeliveryState | AccessToken  ProductId  Enum DeliveryState | bool          | 상품의 배송 상태를 변경하고 성공 여부를 반환합니다. 내가 Host가 아닐 경우에는 Privilege Exception을 throw합니다. | | |
+| SetAnnounce      | AccessToken  ProductId  string             | bool          | 상품의 공지사항을 변경하고 성공 여부를 반환합니다. 내가 Host가 아닐 경우에는 Privilege Exception을 throw합니다. | | |
+| RegisterProduct  | AccessToken  Product                       | Int ProductId | 상품 등록 정보를 받아 상품을 등록합니다. 상품 등록 후 ProductId를 반환합니다. 만약 등록이 실패한다면 -1을 반환합니다. | | |
+| Register        | email, password, name, phone                | bool          | 이메일, 비밀번호, 이름, 전화번호를 받아 유저를 새로 등록합니다. 실패 시 false를 반환합니다. | 송대건 | N |
  
 ## 코드 스타일
 
