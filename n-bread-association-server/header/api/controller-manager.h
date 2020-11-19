@@ -29,9 +29,9 @@ class ControllerManager
     std::unordered_map<std::string, std::unique_ptr<Controller>> _controllers;
 
     std::unordered_map<std::string, std::string>
-                                        _parse_query_str(std::string query_str);
-    std::string                         _decode(std::string const& input);
-    std::pair<std::string, std::string> _decompose(std::string str);
+                                        _parse_query_str(std::string const& query_str);
+    std::string                         _decode(std::string const& str);
+    std::pair<std::string, std::string> _decompose(std::string const& str);
 
   public:
     ControllerManager(ActionManager& am) : _am { am } {}

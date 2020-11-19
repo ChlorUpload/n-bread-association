@@ -1,6 +1,5 @@
 #include "action-manager.h"
 #include "check-token-query.h"
-#include "count-command.h"
 #include "credentials-service.h"
 #include "db-context.h"
 #include "dependency-injection.h"
@@ -38,8 +37,7 @@ int main()
     DependencyInjection di;
     ActionManager       am { di };
     ControllerManager   cm { am };
-    RequestHandler      rh { cm };
-    Session             s { rh, address, port, doc_root };
+    Session             s { cm, address, port, doc_root }; 
 
     cm.add_controller<LoginController>();
     cm.add_controller<RegisterController>();

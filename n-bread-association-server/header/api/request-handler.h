@@ -225,10 +225,18 @@ class RequestHandler
                     auto res = _cm.get_response(std::move(req));
                     return send(std::move(res));
                 }
+                catch (sql::SQLException const& ex)
+                {
+                    return send(server_error(ex.what()));
+                }
+                catch (std::exception const& ex)
+                {
+                    return send(server_error(ex.what()));
+                }
                 catch (...)
                 {
                     return send(
-                        server_error("처리되지 않은 오류가 발생했습니다."));
+                        server_error(u8"처리되지 않은 오류가 발생했습니다."));
                 }
 
                 // auto res = _cm.get_response(std::move(req));
