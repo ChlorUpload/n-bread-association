@@ -110,7 +110,7 @@ Commands
 | SetDeliveryState | AccessToken  ProductId  Enum DeliveryState | bool          | 상품의 배송 상태를 변경하고 성공 여부를 반환합니다. 내가 Host가 아닐 경우에는 Privilege Exception을 throw합니다. | | |
 | SetAnnounce      | AccessToken  ProductId  string             | bool          | 상품의 공지사항을 변경하고 성공 여부를 반환합니다. 내가 Host가 아닐 경우에는 Privilege Exception을 throw합니다. | | |
 | RegisterProduct  | AccessToken  Product                       | Int ProductId | 상품 등록 정보를 받아 상품을 등록합니다. 상품 등록 후 ProductId를 반환합니다. 만약 등록이 실패한다면 -1을 반환합니다. | | |
-
+| Register        | email, password, name, phone                | bool          | 이메일, 비밀번호, 이름, 전화번호를 받아 유저를 새로 등록합니다. 실패 시 false를 반환합니다. | 송대건 | N |
  
 ## 코드 스타일
 
