@@ -15,6 +15,10 @@ find one, the user can enroll their name to the list to indicate that they want 
 a sufficient number of members are enrolled, the host and the registered members can order the stuff
 online.
 
+## service diagram
+![서비스스 다이어그램](service-diagram.png)
+
+
 ## project
 
 ### 1. n-bread-association-exercise
