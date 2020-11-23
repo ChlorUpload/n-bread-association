@@ -15,6 +15,10 @@ find one, the user can enroll their name to the list to indicate that they want 
 a sufficient number of members are enrolled, the host and the registered members can order the stuff
 online.
 
+## service diagram
+![서비스스 다이어그램](service-diagram.png)
+
+
 ## project
 
 ### 1. n-bread-association-exercise
@@ -106,9 +110,9 @@ Commands
 | Name             | Parameters                                 | Return        | Description                                                  | Implemented by | Tested |
 | ---------------- | ------------------------------------------ | ------------- | ------------------------------------------------------------ | -------------- | ------ |
 | CancelMembership | AccessToken                                | bool          | 회원을 탈퇴하고 성공 여부를 반환합니다.                      | | |
-| SetDepositState  | AccessToken  userId  productId  bool       | bool          | 유저의 입금 상태를 변경하고 성공 여부를 반환합니다. 내가 Host가 아닐 경우에는 Privilege Exception을 throw합니다. User가 Product의 Member가  아닐 경우에는 Invalid access Exception을 throw합니니다. | | |
-| SetDeliveryState | AccessToken  ProductId  Enum DeliveryState | bool          | 상품의 배송 상태를 변경하고 성공 여부를 반환합니다. 내가 Host가 아닐 경우에는 Privilege Exception을 throw합니다. | | |
-| SetAnnounce      | AccessToken  ProductId  string             | bool          | 상품의 공지사항을 변경하고 성공 여부를 반환합니다. 내가 Host가 아닐 경우에는 Privilege Exception을 throw합니다. | | |
+| SetDepositState  | AccessToken  userId  productId  bool       | bool          | 유저의 입금 상태를 변경하고 성공 여부를 반환합니다. 내가 Host가 아닐 경우에는 실패합니다. User가 Product의 Member가  아닐 경우에는 Invalid access 실패합니다. | | |
+| SetDeliveryState | AccessToken  ProductId  Enum DeliveryState | bool          | 상품의 배송 상태를 변경하고 성공 여부를 반환합니다. 내가 Host가 아닐 경우에는 실패합니다. | | |
+| SetAnnounce      | AccessToken  ProductId  string             | bool          | 상품의 공지사항을 변경하고 성공 여부를 반환합니다. 내가 Host가 아닐 경우에는 실패합니다. | | |
 | RegisterProduct  | AccessToken  Product                       | Int ProductId | 상품 등록 정보를 받아 상품을 등록합니다. 상품 등록 후 ProductId를 반환합니다. 만약 등록이 실패한다면 -1을 반환합니다. | | |
 | Register        | email, password, name, phone                | bool          | 이메일, 비밀번호, 이름, 전화번호를 받아 유저를 새로 등록합니다. 실패 시 false를 반환합니다. | 송대건 | N |
  
