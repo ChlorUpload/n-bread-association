@@ -81,7 +81,7 @@ class Controller
     /// <param name="params">쿼리 스트링의 좌변을 key로, 우변을 value로 갖는 map</param>
     /// <returns></returns>
     virtual ControllerResp
-    get_response(std::unordered_map<std::string, std::string> params)
+    get_response(std::unordered_map<std::string, std::string> const& params)
         = 0;
 
     /// <summary>

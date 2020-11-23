@@ -14,7 +14,7 @@ class LoginController : public Controller
     using Controller::Controller;
 
     virtual ControllerResp
-    get_response(std::unordered_map<std::string, std::string> params) override
+    get_response(std::unordered_map<std::string, std::string> const& params) override
     {
         auto email_it    = params.find("email");
         auto password_it = params.find("password");

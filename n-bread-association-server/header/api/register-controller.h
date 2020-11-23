@@ -13,8 +13,8 @@ class RegisterController : public Controller
   public:
     using Controller::Controller;
 
-    virtual ControllerResp
-    get_response(std::unordered_map<std::string, std::string> params) override
+    virtual ControllerResp get_response(
+        std::unordered_map<std::string, std::string> const& params) override
     {
         auto name_it     = params.find("name");
         auto email_it    = params.find("email");
