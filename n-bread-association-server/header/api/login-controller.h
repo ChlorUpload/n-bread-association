@@ -23,7 +23,7 @@ class LoginController : public Controller
         {
             // 이메일과 비밀번호가 들어오지 않았을 때, invalid_argument를 반환합니다.
             json           json_token = { { "token", "" } };
-            ControllerResp cr { ControllerResp::req_status::failed,
+            ControllerResp cr { ControllerResp::res_status::failed,
                                 ControllerResp::failure_code::invalid_argument,
                                 "one or more arguments are missing",
                                 json_token };
@@ -41,7 +41,7 @@ class LoginController : public Controller
             {
                 // 성공 시 액세스 토큰을 반환합니다.
                 json           json_token = { { "token", token } };
-                ControllerResp cr { ControllerResp::req_status::success,
+                ControllerResp cr { ControllerResp::res_status::success,
                                     ControllerResp::failure_code::ok,
                                     "",
                                     json_token };
@@ -51,7 +51,7 @@ class LoginController : public Controller
             {
                 // 실패 시 access_denied를 반환합니다.
                 json           json_token = { { "token", "" } };
-                ControllerResp cr { ControllerResp::req_status::failed,
+                ControllerResp cr { ControllerResp::res_status::failed,
                                     ControllerResp::failure_code::access_denied,
                                     "email or password is not correct",
                                     json_token };

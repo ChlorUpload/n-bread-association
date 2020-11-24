@@ -28,7 +28,7 @@ class Controller
         /// <summary>
         /// 요청 상태
         /// </summary>
-        enum class req_status
+        enum class res_status
         {
             /// <summary>
             /// 요청 성공
@@ -67,7 +67,7 @@ class Controller
             unknown_error,
         };
 
-        req_status   status;
+        res_status   status;
         failure_code failure;
         std::string  log;
         json         response;

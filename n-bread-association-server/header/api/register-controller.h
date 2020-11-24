@@ -26,7 +26,7 @@ class RegisterController : public Controller
         {
             // 정보가 모두 들어오지 않았을 경우, invalid_argument를 반환합니다.
             json           res = {};
-            ControllerResp cr { ControllerResp::req_status::failed,
+            ControllerResp cr { ControllerResp::res_status::failed,
                                 ControllerResp::failure_code::invalid_argument,
                                 "one or more arguments are missing",
                                 res };
@@ -46,7 +46,7 @@ class RegisterController : public Controller
             {
                 // 성공 시
                 json           res = {};
-                ControllerResp cr { ControllerResp::req_status::success,
+                ControllerResp cr { ControllerResp::res_status::success,
                                     ControllerResp::failure_code::ok,
                                     "successfully registered",
                                     res };
@@ -57,7 +57,7 @@ class RegisterController : public Controller
                 // 실패 시, duplicate_email을 반환합니다.
                 json           res = {};
                 ControllerResp cr {
-                    ControllerResp::req_status::failed,
+                    ControllerResp::res_status::failed,
                     ControllerResp::failure_code::duplicate_email,
                     "there is a duplicate email",
                     res

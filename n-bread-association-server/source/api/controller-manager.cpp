@@ -115,8 +115,8 @@ ControllerManager::get_response(http::request<http::string_body>&& req)
         bool status;
         switch (cr.status)
         {
-        case ControllerResp::req_status::failed: status = false; break;
-        case ControllerResp::req_status::success: status = true; break;
+        case ControllerResp::res_status::failed: status = false; break;
+        case ControllerResp::res_status::success: status = true; break;
         }
 
         json response_json = { { "status", status },
