@@ -57,6 +57,8 @@ online.
 2020-11-14. `n-bread-association-server` 프로젝트의 프레임워크 완성  
 2020-11-15. 프로젝트 `n-bread-association-server`를 관리하기 위해 CMake 통합  
 2020-11-17. 모델과 실제 DB간의 커플링 해제
+2020-11-23. 팀 내 세미나 1회(주제: 생성자와 소멸자, new delete, 상속과 다형성)  
+2020-11-24. 팀 내 세미나 2회(주제: l-value 레퍼런스와 r-value 레퍼런스, 템플릿 및 템플릿 특수화)  
 
 ## design
 
