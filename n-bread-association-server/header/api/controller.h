@@ -62,6 +62,10 @@ class Controller
             /// </summary>
             duplicate_email,
             /// <summary>
+            /// 잘못된 액세스 토큰
+            /// </summary>
+            invalid_token,
+            /// <summary>
             /// 알 수 없는 오류
             /// </summary>
             unknown_error,
