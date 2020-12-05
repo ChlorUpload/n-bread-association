@@ -18,12 +18,13 @@ add_library(server-lib
     source/infrastructure/credentials-service.cpp
     source/infrastructure/db-context.cpp
     source/infrastructure/encryption-service.cpp
-)
+ "source/core/get-products-query.cpp")
 target_include_directories(server-lib PUBLIC
     header/api
     header/core
     header/infrastructure
     header/domain
+    header/viewmodel
     ${JSON}
     ${BOOST}
     ${MYSQL}

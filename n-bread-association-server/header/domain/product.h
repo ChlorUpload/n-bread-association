@@ -1,6 +1,8 @@
 #ifndef __H_PRODUCT__
 #define __H_PRODUCT__
 
+#include "date.h"
+
 #include <string>
 
 /// <summary>
@@ -36,17 +38,17 @@ struct Product
     /// <summary>
     /// 상품의 호스트 아이디
     /// </summary>
-    int         host_id;
+    int host_id;
 
     /// <summary>
     /// 상품 전체 가격
     /// </summary>
-    int         price;
+    int price;
 
     /// <summary>
     /// 상품의 낱개 개수
     /// </summary>
-    int         quantity;
+    int quantity;
 
     /// <summary>
     /// 상품 제목
@@ -67,21 +69,21 @@ struct Product
     /// 상품을 구매할 사람들끼리 대화할 수 있는 채팅방 URL
     /// </summary>
     std::string chat_url;
-    
+
     /// <summary>
     /// 상품의 배송 상태
     /// </summary>
-    Deliver     deliver;
+    Deliver deliver;
 
     /// <summary>
     /// 상품이 등록된 시간 (그리니치 천문대 기준)
     /// </summary>
-    std::tm     created_at;
+    Date created_at;
 
     /// <summary>
     /// 상품 모집 마감 기한 (그리니치 천문대 기준)
     /// </summary>
-    std::tm     expires_at;
+    Date expires_at;
 };
 
 /// <summary>

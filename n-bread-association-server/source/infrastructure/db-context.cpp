@@ -7,25 +7,6 @@
 #include <iomanip>
 #include <sstream>
 
-namespace
-{
-std::tm str_to_time(std::string const& time)
-{
-    std::tm            t;
-    std::istringstream ss(time);
-    ss >> std::get_time(&t, "%Y-%m-%d %H:%M:%S");
-    return t;
-}
-
-std::string time_to_str(std::tm const& time)
-{
-    std::string        str;
-    std::ostringstream ss;
-    ss << std::put_time(&time, "%Y-%m-%d %H:%M:%S");
-    return ss.str();
-}
-}
-
 /* get */
 
 template <>
@@ -152,8 +133,8 @@ bool DbContext::create<Product>(Product& model)
     pre_stmt->setString(6, model.url.c_str());
     pre_stmt->setString(7, model.chat_url.c_str());
     pre_stmt->setInt(8, static_cast<int>(model.deliver));
-    pre_stmt->setString(9, time_to_str(model.created_at));
-    pre_stmt->setString(10, time_to_str(model.expires_at));
+    pre_stmt->setString(9, model.created_at.to_string().c_str());
+    pre_stmt->setString(10, model.expires_at.to_string().c_str());
     
     pre_stmt->executeUpdate();
 
@@ -274,8 +255,8 @@ bool DbContext::update<Product>(Product const& model)
     pre_stmt->setString(6, model.url.c_str());
     pre_stmt->setString(7, model.chat_url.c_str());
     pre_stmt->setInt(8, static_cast<int>(model.deliver));
-    pre_stmt->setString(9, time_to_str(model.created_at));
-    pre_stmt->setString(10, time_to_str(model.expires_at));
+    pre_stmt->setString(9, model.created_at.to_string().c_str());
+    pre_stmt->setString(10, model.expires_at.to_string().c_str());
 
     pre_stmt->setInt(11, model.id);
 
@@ -359,6 +340,7 @@ void Iterator<Product>::get_value()
 {
     Product p;
     p.id         = _result->getInt("id");
+    p.title      = _result->getString("title");
     p.host_id    = _result->getInt("host_id");
     p.price      = _result->getInt("price");
     p.quantity   = _result->getInt("quantity");
@@ -366,8 +348,8 @@ void Iterator<Product>::get_value()
     p.url        = _result->getString("url");
     p.chat_url   = _result->getString("chat_url");
     p.deliver    = static_cast<Deliver>(_result->getInt("deliver"));
-    p.created_at = str_to_time(_result->getString("created_at"));
-    p.expires_at = str_to_time(_result->getString("expires_at"));
+    p.created_at = _result->getString("created_at");
+    p.expires_at = _result->getString("expires_at");
     _val         = p;
 }
 

@@ -13,6 +13,8 @@ class CheckTokenController : public Controller
     virtual ControllerResp get_response(
         std::unordered_map<std::string, std::string> const& params) override
     {
+        std::cout << "check-token-controller" << std::endl;
+
         auto token_it = params.find("accessToken");
 
         for (auto& v : params)

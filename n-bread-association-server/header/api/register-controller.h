@@ -16,6 +16,8 @@ class RegisterController : public Controller
     virtual ControllerResp get_response(
         std::unordered_map<std::string, std::string> const& params) override
     {
+        std::cout << "register-controller" << std::endl;
+
         auto name_it     = params.find("name");
         auto email_it    = params.find("email");
         auto password_it = params.find("password");

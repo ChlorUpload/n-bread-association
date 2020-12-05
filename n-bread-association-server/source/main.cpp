@@ -17,6 +17,7 @@
 #include <boost/beast/version.hpp>
 #include <boost/config.hpp>
 #include <cstdlib>
+#include <get-products-controller.h>
 #include <iostream>
 #include <memory>
 #include <string>
@@ -44,8 +45,9 @@ int main()
 
     // 컨트롤러 매니저에 컨트롤러 추가
     cm.add_controller<LoginController>()
-            .add_controller<RegisterController>()
-            .add_controller<CheckTokenController>();
+        .add_controller<RegisterController>()
+        .add_controller<CheckTokenController>()
+        .add_controller<GetProductsController>();
 
     // 웹 서버 실행
     std::cout << "web server started" << std::endl;
